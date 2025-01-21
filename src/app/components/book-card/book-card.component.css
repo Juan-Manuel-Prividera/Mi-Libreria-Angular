@@ -1,0 +1,99 @@
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 4%;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  position: relative;
+  
+  height:85%; 
+  margin-bottom: 15%;
+
+  .btn {
+    background-color: rgb(157, 66, 66);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: transform 0.2s;
+  }
+
+  img {
+    width: 45%;
+    height: auto;
+    border-radius: 4px;
+    transition: transform 0.2s;
+  
+  }
+
+  img:hover {
+    transform: translateY(-5px);
+  }
+
+  .btn:hover {
+    transform: translateY(-5px);
+    background-color: rgb(107, 45, 45);
+  }
+  
+  .pending-marker {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    background-color: red;
+    color: white;
+    font-size: 0.9em;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    z-index: 1;
+    margin-bottom: 3%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .delete-btn {
+    position: absolute; /* Para ubicar el botón dentro del contenedor */
+    bottom: 10px; /* Separación de la parte inferior */
+    right: 10px; /* Separación de la parte derecha */
+    background-color: rgb(157, 66, 66); /* Color de fondo */
+    color: white; /* Color del texto/icono */
+    border: none;
+    border-radius: 50%; /* Forma circular */
+    width: 40px; /* Tamaño del botón */
+    height: 40px; /* Tamaño del botón */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.2s;
+  
+    :hover{
+      background-color: rgb(107, 45, 45); /* Color más oscuro al pasar el cursor */
+      transform: scale(1.1); /* Efecto de zoom */
+    }
+    :active{
+      transform: scale(0.9); /* Efecto de presión */
+    }
+
+    .trash-icon {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/3096/3096687.png'); /* URL del icono de tacho */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-color: transparent;
+    }
+  }
+
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}

@@ -1,0 +1,21 @@
+<app-header></app-header>
+<div class="bars-container">
+  <div class="sort-container">
+    <label> Ordenar por...</label>
+    <div class="select-wrapper">
+    <select id="sort-selector" [(ngModel)]="sortCriteria" (change)="sortedBooks()">
+      <option value="author">Autor</option>
+      <option value="date" selected >Fecha de lanzamiento</option>
+      <option value="pending">Estado (Pendiente)</option>
+    </select>
+    </div>
+  </div>
+  <div class="search-container">
+    <app-search-bar></app-search-bar>
+  </div>
+</div>
+<div class="gallery">
+  @for (book of books; track $index) {
+    <app-book-card [book]="book"></app-book-card>
+  }
+</div>

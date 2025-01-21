@@ -1,0 +1,53 @@
+
+<form [formGroup]="bookForm" (submit)="handleSubmit()">
+  <fieldset>
+    <label for="title">Titulo</label>
+    <input id="title" type="text" formControlName="title">
+  </fieldset>
+  <fieldset>
+    <label for="author">Autor</label>
+    <input id="author" type="text" formControlName="author">
+  </fieldset>
+  <fieldset>
+    <label for="year">Año</label>
+    <input id="year" type="number" formControlName="year">
+  </fieldset>
+  
+  <div class="genres-container" formArrayName="genres">
+    @for(genreCtr of genres.controls; track $index) {
+      <fieldset>
+        <label for="genre{{$index}}">Genero {{$index + 1}}</label>
+        <select id="genre{{$index}}" type="text" formControlName="{{$index}}">
+          @for(genre of genresList; track $index) {
+            <option [value]="genre">{{ genre }}</option>
+          }
+        </select>
+      </fieldset>
+    }
+    <button class="btn-add-genre" type="button" (click)="addGenre()">Agregar Genero</button> 
+  </div>
+  <fieldset>
+    <label for="dynamic-input">Saga:</label>
+    <input id="dynamic-input" list="dynamic-options" formControlName="saga"/>
+    <datalist id="dynamic-options">
+      @for(saga of sagas; track $index) {
+        <option [value]="saga"></option>
+      }
+    </datalist>
+  </fieldset>
+  <fieldset>
+    <label for="pages">Paginas</label>
+    <input id="pages" type="number" formControlName="pages">
+  </fieldset>
+  <fieldset>
+    <label for="cover">Portada</label>
+    <input id="cover" type="text" formControlName="cover">
+  </fieldset>
+  <fieldset>
+    <label for="description">Descripción</label>
+    <textarea id="description" formControlName="description"></textarea>
+  </fieldset>
+
+  <button type="submit">Guardar</button>
+</form>
+

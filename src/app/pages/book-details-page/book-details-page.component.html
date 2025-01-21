@@ -1,0 +1,39 @@
+<app-header></app-header>
+<h1>{{ book?.title }}</h1>
+<div class="book-details">
+  <div class="book-image">
+    <img [src]="book?.cover" alt="Cover of {{ book?.title }}">
+    @if (book?.pending) {
+      <p class="pending">Pendiente</p>
+    }
+  </div>
+  <div class="book-info">
+    <p><strong>Autor: </strong> {{ book?.author }}</p>
+    <p><strong>Año lanzamiento: </strong>{{ book?.year }}</p>
+    <p><strong>Saga: </strong> {{ book?.saga }}</p>
+    @if(hayMasDeUnGenero) { 
+      <p><strong>Generos:</strong> 
+        @for(genre of book?.genres; track $index) {
+          {{ genre  }}
+        }
+      </p>  
+    } @else {
+      <p><strong>Genero:</strong>{{ book?.genres?.[0] ?? '' }}</p>
+    }
+    <p><strong>Calificación: </strong></p>
+    <app-book-calification [book]="book"></app-book-calification> 
+    
+    <div class="description-box">
+      <h3>Descripción</h3>
+      <p>{{ book?.description }}</p> 
+    </div> 
+  </div>
+</div>
+<div class="saga-container">
+  <h2>Libros de la saga:  {{book?.saga}}</h2>
+  <div class="saga-books">
+    @for (book of otrosLibrosSaga; track $index) {
+      <app-book-card [book]="book"></app-book-card>
+    }
+  </div>
+</div>

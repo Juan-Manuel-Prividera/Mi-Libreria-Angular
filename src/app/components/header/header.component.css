@@ -1,0 +1,41 @@
+
+.header{
+  text-align: center;
+  background-color: rgb(255, 235, 204);
+  margin: 0;
+  padding: 0;
+
+  h1 {
+    margin-top: 0;
+    padding-top: 1%;
+  }
+
+  .nav-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;  
+    list-style: none;  
+    padding-left: 0;
+    li {
+      padding-bottom: 1%;
+      width: 100%;
+      height: 100%;
+      transition: background-color 0.3s; /* Efecto suave al cambiar el fondo */
+      /* border-radius: 8px; Opcional: bordes redondeados */
+    }
+    
+    li:hover {
+      background-color: rgb(241, 213, 171);
+    }
+
+    .link{
+      display: block;
+      pointer-events: auto;
+      text-decoration: none;
+      font-size: 1.8em;
+      color: black;
+      
+    }
+   
+  }
+}

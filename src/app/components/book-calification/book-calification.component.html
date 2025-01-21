@@ -1,0 +1,9 @@
+<div class="star-rating">
+  @for (star of stars; track $index) {
+    <span 
+          (click)="setRating( $index +1)" 
+          [class.filled]="$index  < (book()?.calification || 0)">
+      &#9733;
+    </span>
+  }
+</div> 

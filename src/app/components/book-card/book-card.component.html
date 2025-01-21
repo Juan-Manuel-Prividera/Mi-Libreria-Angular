@@ -1,0 +1,40 @@
+<div class="card">
+    
+  @if(book()?.pending) {
+    <div class="pending-marker">Pendiente</div>
+  }
+
+  <a class="link" routerLink="/books/{{ book()?.id }}">
+      <img [src]="book()?.cover" alt="Book Cover">
+  </a>  
+  
+  <h3>{{ book()?.title}}</h3>
+  <p>{{ book()?.author }}</p>
+  
+  @if(hayMasDeUnGenero) { 
+    <p>Generos: 
+      @for(genre of book()?.genres; track $index) {
+        {{ genre  }}
+      }
+    </p>  
+  } @else {
+    <p>Genero: {{ book()?.genres?.[0] ?? '' }}</p>
+  }
+
+  @if (book()?.pending) {
+    <button class="btn" (click)="marcarComoLeido()">Marcar como leído</button>
+
+  } @else {
+    <app-book-calification [book]="book()"></app-book-calification> 
+  }
+
+  <button class="delete-btn" (click)="eliminarLibro()">
+    <i class="trash-icon"></i>
+  </button>
+  @if(showPopup){
+    <app-confirmation-popup
+      [message]="'Seguro que desea eliminar el libro?'"
+      (confirm)="confirmarEliminacion($event)" 
+    ></app-confirmation-popup>
+  }
+</div>

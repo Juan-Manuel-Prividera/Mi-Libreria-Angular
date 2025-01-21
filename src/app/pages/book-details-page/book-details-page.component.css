@@ -1,0 +1,93 @@
+.book-details {
+  display: flex;
+  padding: 20px;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 10%;
+
+  .book-image {
+    padding-right: 20px;
+
+    .pending {
+      background-color: red;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    img {
+      width: 250px;
+    }
+  }
+
+  .book-info {
+    margin-left: 20%;
+    p {
+      font-size: 1.2em;
+      margin: 10px 0;
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    }
+
+    .description-box {
+      padding: 20px;
+      border: solid 1px #ccc; /* Borde gris claro */
+      background-color: #f9f9f9; /* Fondo blanco/gris muy claro */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+      border-radius: 8px; /* Bordes redondeados */
+      /* max-width: 600px; Ancho máximo para mantener el contenido compacto */
+      margin: 0 auto; /* Centra el cuadro si es necesario */
+    
+      h3 {
+        margin-top: 0;
+        font-size: 1.5em;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #333; /* Texto oscuro para mayor contraste */
+      }
+    
+      p {
+        margin-top: 10px;
+        font-size: 1em;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.6;
+        color: #555; /* Texto gris oscuro */
+      }
+    }
+
+  }
+
+}
+
+h1 {
+  font-size: 2.5em;
+  text-align: center;
+}
+
+.saga-books {
+  display: flex;
+  gap: 0.5vw;
+  padding: 20px;
+  overflow-x: auto; /* Habilita el desplazamiento horizontal */
+  white-space: nowrap; /* Previene que los elementos se envuelvan */
+}
+
+.saga-container{
+  display: flex;
+  flex-direction: column;
+  padding: 1.5%;
+  padding-bottom: 0;
+  
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-bottom: 2%;
+
+  h2 {
+    padding: 1.7%;
+    width: 97%;
+    border: solid 1px #ccc; /* Borde gris claro */
+    background-color: rgb(255, 235, 204);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    border-radius: 8px; /* Bordes redondeados */
+    margin-top: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+}
