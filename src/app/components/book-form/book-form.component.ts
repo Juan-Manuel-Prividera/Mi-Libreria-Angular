@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Form, FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Form, FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BookService } from '../../services/book.service';
 
 @Component({
@@ -29,13 +29,13 @@ export class BookFormComponent implements OnInit {
   constructor(public bookService: BookService) {
     this.inputSaga = '';
 
-    this.title = new FormControl();
-    this.author = new FormControl();
-    this.description = new FormControl();
-    this.pages = new FormControl();
-    this.year = new FormControl();
+    this.title = new FormControl('',Validators.required);
+    this.author = new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]);
+    this.description = new FormControl('',Validators.required);
+    this.pages = new FormControl('',[Validators.required, Validators.min(1)]);
+    this.year = new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(4)]);
     this.genres = new FormArray<FormControl>([]);
-    this.cover = new FormControl();
+    this.cover = new FormControl('',[Validators.required, Validators.pattern(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/)]);
     this.saga = new FormControl();
 
     this.bookForm = new FormGroup({
@@ -81,7 +81,7 @@ export class BookFormComponent implements OnInit {
 
   addGenre() {
     if (this.genres.length < this.maxGenres) {
-      this.genres.push(new FormControl());
+      this.genres.push(new FormControl('',Validators.required));
     }
   }
 

@@ -5,92 +5,57 @@ import { BookService } from '../../services/book.service';
 import { BookCardComponent } from '../../components/book-card/book-card.component';
 import { SearchBarComponent } from "../../components/search-bar/search-bar.component";
 import { FormsModule } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { BookPageService } from '../../services/book-page.service';
+import { waitForAsync } from '@angular/core/testing';
+import { SortBooksComponent } from "../../components/sort-books/sort-books.component";
 // import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-book-page',
-  imports: [HeaderComponent, BookCardComponent, SearchBarComponent, FormsModule],
+  imports: [HeaderComponent, BookCardComponent, SearchBarComponent, FormsModule, SortBooksComponent],
   templateUrl: './book-page.component.html',
   styleUrl: './book-page.component.css'
 })
 
 export class BookPageComponent implements OnInit {
   books: Book[];
-  sortCriteria : string;
+  subscription: Subscription;
 
-  constructor(public bookService: BookService) {
+  constructor(public bookService: BookService, public bookPageService: BookPageService) {
     this.books = [];
-    this.sortCriteria = 'date'; 
+    this.subscription = new Subscription();
   }
 
   ngOnInit(): void {
+    this.reloadBooks();
+    this.subscription = this.bookPageService.cardDeleted$.subscribe(() => {
+      console.log('Card deleted');
+      this.reloadBooks();
+      console.log('Books reloaded');
+    });
+  }
+
+  reloadBooks() {
     this.bookService.getBooks().subscribe({
-      next: (data) => { 
+      next: (data) => {
         this.books = data;
-        this.orderByDate();
       },
-      error: (e) => { 
+      error: (e) => {
         console.error(e);
       }
-    })
-  }
-
-  sortedBooks() {
-    switch (this.sortCriteria) {
-      case 'author':
-        this.orderByAuthor();
-        break;
-      case 'date':
-        this.orderByDate();
-        break;
-      case 'pending':
-        this.orderByPending();
-        break;
-      default:
-        break;
-        
-    }
-  }
-
-  orderByDate() {   
-    this.books = this.books.sort((a, b) => {
-      return a.year - b.year;
     });
   }
 
-  orderByAuthor() {
-    this.books = this.books.sort((a, b) => {
-      return a.author.localeCompare(b.author);
-    });
+  sortBooks(books: Book[]) {
+    this.books = books;
   }
 
-  orderByPending() {
-    this.books = this.books.sort((a, b) => {
-      return a.pending === b.pending ? 0 : a.pending ? -1 : 1;
-    });
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
+}
 
-  orderByTitle() {
-    this.books = this.books.sort((a, b) => {
-      return a.title.localeCompare(b.title);
-    });
-  }
-
-
-
-  // filterByGenre(genre: string) {
-  //   this.books = this.books.filter(book => book.genre === genre);
-  // }
-
-  filterByAuthor(author: string) {
-    this.books = this.books.filter(book => book.author === author);
-  }
-
-  findByTitle(title: string) {
-    this.books = this.books.filter(book => book.title === title);
-  }
-  
-  filterByPending(pending: boolean) {
-    this.books = this.books.filter(book => book.pending === pending);
-  }
+function wait(arg0: number) {
+  throw new Error('Function not implemented.');
 }

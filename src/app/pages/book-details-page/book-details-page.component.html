@@ -10,7 +10,9 @@
   <div class="book-info">
     <p><strong>Autor: </strong> {{ book?.author }}</p>
     <p><strong>Año lanzamiento: </strong>{{ book?.year }}</p>
-    <p><strong>Saga: </strong> {{ book?.saga }}</p>
+    @if(book?.saga) {
+      <p><strong>Saga: </strong> {{ book?.saga }}</p>
+    }
     @if(hayMasDeUnGenero) { 
       <p><strong>Generos:</strong> 
         @for(genre of book?.genres; track $index) {
@@ -29,11 +31,13 @@
     </div> 
   </div>
 </div>
-<div class="saga-container">
-  <h2>Libros de la saga:  {{book?.saga}}</h2>
-  <div class="saga-books">
-    @for (book of otrosLibrosSaga; track $index) {
-      <app-book-card [book]="book"></app-book-card>
-    }
+@if (book?.saga) {
+  <div class="saga-container">
+    <h2>Libros de la saga:  {{book?.saga}}</h2>
+    <div class="saga-books">
+      @for (book of otrosLibrosSaga; track $index) {
+        <app-book-card [book]="book" [buttons]=false></app-book-card>
+      }
+    </div>
   </div>
-</div>
+}

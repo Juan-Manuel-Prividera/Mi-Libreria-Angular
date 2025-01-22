@@ -1,0 +1,60 @@
+.sort-container {
+  display: flex;
+  margin-left: 5%;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+}
+
+.select-wrapper {
+  position: relative;
+  width: 60%; /* Ajusta el tamaño del contenedor */
+}
+
+#sort-selector {
+  width: 100%; /* Ocupa el 100% del ancho del contenedor */
+  padding: 10px;
+  font-size: 14px;
+  color: #333;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  appearance: none; /* Oculta el estilo nativo del navegador */
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Estilo para el enfoque */
+#sort-selector:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.6);
+  outline: none;
+}
+
+/* Cambia el color al pasar el cursor */
+#sort-selector:hover {
+  border-color: #0056b3;
+}
+
+/* Flechita personalizada */
+.select-wrapper::after {
+  content: '▼'; /* Símbolo de flecha */
+  position: absolute;
+  right: 15px; /* Espacio desde el borde derecho */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #333;
+  pointer-events: none; /* Evita interferencias en los clics */
+}
+
+.search-container{
+  justify-content: center;
+  width: 50%;
+
+}
+
+label{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: small;
+}

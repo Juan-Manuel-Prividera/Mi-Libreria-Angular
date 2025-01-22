@@ -1,0 +1,12 @@
+<div class="sort-container">
+  <label> Ordenar por...</label>
+  <div class="select-wrapper">
+  <select id="sort-selector" [(ngModel)]="sortCriteria" (change)="sortedBooks()">
+    <option value="author">Autor</option>
+    <option value="date-as" selected >Fecha de lanzamiento (AS)</option>
+    <option value="date-des" selected >Fecha de lanzamiento (DES)</option>
+    <option value="pending">Estado (Pendiente)</option>
+    <option value="title">Título</option>
+  </select>
+  </div>
+</div>

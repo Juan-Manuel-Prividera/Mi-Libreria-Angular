@@ -7,9 +7,14 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
   position: relative;
-  
+   
   height:85%; 
   margin-bottom: 15%;
+
+  p {
+    text-overflow: ellipsis; 
+    overflow-y: auto
+  }
 
   .btn {
     background-color: rgb(157, 66, 66);

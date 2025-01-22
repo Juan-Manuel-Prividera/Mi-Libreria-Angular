@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { BookCalificationComponent } from "../book-calification/book-calification.component";
 import { BookService } from '../../services/book.service';
 import { ConfirmationPopupComponent } from "../confirmation-popup/confirmation-popup.component";
+import { BookPageService } from '../../services/book-page.service';
+import { waitForAsync } from '@angular/core/testing';
 
 @Component({
   selector: 'app-book-card',
@@ -15,8 +17,9 @@ export class BookCardComponent implements OnInit {
   book = input<Book>();
   hayMasDeUnGenero: boolean;
   showPopup: boolean;
+  buttons = input<boolean>();
 
-  constructor(public bookService: BookService) {
+  constructor(public bookService: BookService, public bookPageService: BookPageService) {
     this.hayMasDeUnGenero = false;
     this.showPopup = false;
   }
@@ -48,14 +51,19 @@ export class BookCardComponent implements OnInit {
         this.bookService.deleteBook(book.id).subscribe({
           next: () => {
             console.log('Libro eliminado');
-            window.location.reload();
+            this.bookPageService.notifyCardDeleted();
           },
           error: (e) => {
             console.error(e);
           }
         });
+
       }
     }
     this.showPopup = false; 
   }
 }
+function wait(arg0: number) {
+  throw new Error('Function not implemented.');
+}
+

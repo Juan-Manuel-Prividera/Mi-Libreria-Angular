@@ -20,17 +20,18 @@
   } @else {
     <p>Genero: {{ book()?.genres?.[0] ?? '' }}</p>
   }
+  @if (buttons()) {
+    @if (book()?.pending) {
+      <button class="btn" (click)="marcarComoLeido()">Marcar como leído</button>
 
-  @if (book()?.pending) {
-    <button class="btn" (click)="marcarComoLeido()">Marcar como leído</button>
+    } @else {
+      <app-book-calification [book]="book()"></app-book-calification> 
+    }
 
-  } @else {
-    <app-book-calification [book]="book()"></app-book-calification> 
+    <button class="delete-btn" (click)="eliminarLibro()">
+      <i class="trash-icon"></i>
+    </button>
   }
-
-  <button class="delete-btn" (click)="eliminarLibro()">
-    <i class="trash-icon"></i>
-  </button>
   @if(showPopup){
     <app-confirmation-popup
       [message]="'Seguro que desea eliminar el libro?'"

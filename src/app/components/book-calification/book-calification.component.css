@@ -1,12 +1,14 @@
 .star-rating {
   margin-bottom: 2.8%; 
-}
-.star-rating span {
-  font-size: 2rem;
-  color: #ddd; /* color para estrellas vacías */
-  cursor: pointer;
-}
 
-.star-rating span.filled {
-  color: gold; /* color para estrellas llenas */
+  span {
+    font-size: 2rem;
+    color: #ddd; /* color para estrellas vacías */
+    cursor: pointer;
+    
+  }
+
+  span.filled {
+    color: gold; /* color para estrellas llenas */
+  }
 }
