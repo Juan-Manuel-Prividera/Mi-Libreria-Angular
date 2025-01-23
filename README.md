@@ -11,7 +11,7 @@ Esta web se comunica con un back bastante simple hecho en Java con Spring.
 
 # Algunas capturas de la Web
 
-![imagen](https://github.com/user-attachments/assets/90b6e0c7-b735-4f70-a0e0-4022bde6181f)
+https://github.com/user-attachments/assets/086e1796-47a5-4cfe-8cd3-4669b225ff15
 
-![imagen](https://github.com/user-attachments/assets/6ece1709-d3d0-40ed-910b-ba95d0f47787)
 
+https://github.com/user-attachments/assets/6089a158-ebd8-4ece-a2de-ca72aca20af2
